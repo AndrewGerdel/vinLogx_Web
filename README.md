@@ -1,3 +1,9 @@
+
+Delete the package-lock.json
+set the angular versions correctly per the readme "ng update @angular/cli@1 @angular/core@4" (match whatever he says in readme)
+npm i
+ng serve
+
 # [Material Dashboard Angular - Free Bootstrap Material Design Admin](https://www.creative-tim.com/product/material-dashboard-angular2)[![version][version-badge]][CHANGELOG]
 
 ![Product Gif](https://raw.githubusercontent.com/creativetimofficial/public-assets/master/material-dashboard-angular/material-dashboard-angular.gif)
