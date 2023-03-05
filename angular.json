@@ -167,6 +167,7 @@
       }
     }
   },
+  "defaultProject": "vinLogx_Web",
   "schematics": {
     "@schematics/angular:component": {
       "prefix": "app",

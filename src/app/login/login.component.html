@@ -1,1 +1,31 @@
-<p>login works!</p>
+<div class="container">
+    <div style="padding-top: 70px;" class="row">
+        <div class="col-xs-8 col-md-8 offset-md-2">
+            <div style="text-align: center; font-size: xx-large; padding: 30px;" class="col-xs-8 offset-xs-2 slideInRight fadeIn6">
+                Login
+            </div>
+            <div class="slideInLeft "
+                style="text-align: center; padding: 30px; border: 1px solid black; border-radius: 10px; box-shadow: 3px 3px #888888;">
+                <form  [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+                    <mat-form-field appearance="fill" style="width: 80%;">
+                        <mat-label>Username</mat-label>
+                        <input [(ngModel)]="username" matInput autocomplete="username" formControlName="username" required>
+                    </mat-form-field>
+                    <mat-form-field appearance="fill" style="width: 80%;">
+                        <mat-label>Password</mat-label>
+                        <input [(ngModel)]="password" type="password" matInput autocomplete="current-password" required formControlName="password">
+                    </mat-form-field>
+                    <div *ngIf="!submitting">
+                        <button mat-raised-button color="primary" type="submit" [disabled]="submitting || !registerForm.valid">Login</button>
+                    </div>
+                    <div *ngIf="submitting">
+                        <mat-spinner style="margin:0 auto;"  [diameter]="30"></mat-spinner>
+                    </div>
+                    <div *ngIf="this.userService.errorMsg" style="padding: 20px">
+                        <mat-label style="color: red">{{this.userService.errorMsg}}</mat-label>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
