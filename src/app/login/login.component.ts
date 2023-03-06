@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { AuthenticationService } from '../authentication.service';
+
 
 @Component({
   selector: 'app-login',
@@ -7,9 +10,33 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LoginComponent implements OnInit {
 
-  constructor() { }
+  username = "";
+  password = "";
+  errorMsg = "";
+  submitting = false;
 
-  ngOnInit(): void {
+  registerForm = new FormGroup({
+    username: new FormControl(''),
+    password: new FormControl('')
+    });
+  
+  constructor(public userService: AuthenticationService) { }
+
+  ngOnInit() {
+    this.userService.loginSubject.subscribe(x=>{
+      if(x){ 
+        window.location.href = "/confirmLoginSms"
+      }else{
+        this.errorMsg = "Login failed."
+        this.submitting = false;
+      }
+    });
+  
+  }
+
+  onSubmit() {
+    this.submitting = true;
+    this.userService.login(this.username, this.password);
   }
 
 }
